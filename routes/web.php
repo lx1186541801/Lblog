@@ -18,6 +18,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/', 'StaticPagesController@index');
-Route::get('/help', 'StaticPagesController@help');
-Route::get('/about', 'StaticPagesController@about');
+Route::get('/', 'StaticPagesController@index')->name('index');
+Route::get('/help', 'StaticPagesController@help')->name('help');
+Route::get('/about', 'StaticPagesController@about')->name('about');
