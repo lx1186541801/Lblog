@@ -10,10 +10,13 @@
 			<h5>SIGN UP</h5>
 		</div>
 		<div class="card-body">
+
+			@include('shares._errors')
+			
 			<form action="{{ route('users.store') }}" method="POST">
 
 				@csrf
-				
+
 				<div class="form-group">
 					<label for="name">名称</label>
 					<input type="text" name="name" class="form-control" value="{{ old('name') }}">
