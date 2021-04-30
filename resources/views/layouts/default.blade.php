@@ -12,7 +12,10 @@
 
 
 	<div class="container">
+		@include('shares._messages')
+
 		@yield('content')
+		
 		@include('layouts._footer')
 	</div>
 
