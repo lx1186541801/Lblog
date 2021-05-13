@@ -30,8 +30,12 @@ class SessionsController extends Controller
     	return ;
     }
 
-    public function destroy(Request $request)
+    public function destroy()
     {
-    	return ;
+
+    	Auth::logout();
+
+    	session()->flash('success', '您已成功退出！');
+    	return redirect('login');
     }
 }
