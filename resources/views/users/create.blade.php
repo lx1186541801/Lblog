@@ -29,12 +29,12 @@
 
 				<div class="form-group">
 					<label for="name">密码</label>
-					<input type="text" name="password" class="form-control" value="{{ old('password') }}">
+					<input type="password" name="password" class="form-control" value="{{ old('password') }}">
 				</div>
 
 				<div class="form-group">
 					<label for="name">确认密码</label>
-					<input type="text" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
+					<input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
 				</div>
 
 

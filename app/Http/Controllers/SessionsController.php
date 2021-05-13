@@ -9,7 +9,7 @@ class SessionsController extends Controller
 {
     public function create()
     {
-    	return view('sessions.create');
+    	return view('sessions.login');
     }
 
     public function store(Request $request)
@@ -22,7 +22,7 @@ class SessionsController extends Controller
     	if (Auth::attempt($credentials)) {
     		session()->flash('success', '欢迎回来！');
     		return redirect()->route('users.show', [Auth::user()]);
-    		
+
     	} else {
     		session()->flash('danger', '抱歉，邮箱与密码不匹配');
     		return redirect()->back()->withInput();

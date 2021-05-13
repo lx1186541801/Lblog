@@ -12,13 +12,15 @@
 
 
 	<div class="container">
-		@include('shares._messages')
+		<div class="offset-md-1 col-md-10">
+			@include('shares._messages')
 
-		@yield('content')
-		
-		@include('layouts._footer')
+			@yield('content')
+			
+			@include('layouts._footer')
+		</div>
 	</div>
 
-
+	<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
