@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Email;
 use Auth;
+use Mail;
 
 class UsersController extends Controller
 {
@@ -122,11 +122,11 @@ class UsersController extends Controller
     	$from = 'robert@qq.com';
     	$name = 'Robert';
     	$to = $user->email;
-    	$subject = "感谢注册" .APP_NAME . "请确认你的邮箱";
+    	$subject = "感谢注册" . env('APP_NAME') . "请确认你的邮箱";
 
 
     	Mail::send($view, $data, function($message) use ($from, $name, $to, $subject) {
-    		$message->form($from, $name)->to($to)->subject($subject);
+    		$message->from($from, $name)->to($to)->subject($subject);
     	});
     }
 

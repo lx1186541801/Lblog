@@ -6,7 +6,7 @@
 	<title>注册确认链接</title>
 </head>
 <body>
-	<h1>感谢您在{{ APP_NAME }}网站注册</h1>
+	<h1>感谢您在{{ env('APP_NAME') }}网站注册</h1>
 
 	<p>请点击下面链接完成注册:
 		<a href="{{ route('confirm_email', $user->activation_token) }}">{{ route('confirm_email', $user->activation_token) }}</a>
