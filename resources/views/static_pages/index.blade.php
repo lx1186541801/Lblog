@@ -10,6 +10,11 @@
 			<section class="status_form">
 				@include('shares._status_form')
 			</section>
+			<h4>动态列表</h4>
+			<hr>
+			
+			@include('shares._feed')
+
 		</div>
 		<aside class="col-md-4">
 			<section class="user_info">

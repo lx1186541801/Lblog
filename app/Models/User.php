@@ -60,6 +60,18 @@ class User extends Authenticatable
         return $this->hasMany(Status::class);
     }
 
+    /**
+     * 获取当前用户所有 动态
+     * @Author   Robert
+     * @DateTime 2021-05-19
+     * @return   [type]     [description]
+     */
+    public function feed()
+    {
+        return $this->stauses()
+                        ->orderBy('created_at', 'desc');
+    }
+
 
 
 
