@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::get('/', 'StaticPagesController@index')->name('index');
 Route::get('/help', 'StaticPagesController@help')->name('help');
@@ -41,3 +37,6 @@ Route::post('password/email', 'PasswordController@sendResetLinkEmail')->name('pa
 Route::get('password/reset/{token}', 'PasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'PasswordController@reset')->name('password.update');
 
+
+
+Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);

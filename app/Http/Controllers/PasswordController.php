@@ -21,7 +21,7 @@ class PasswordController extends Controller
     		'only' => ['showLinkRequestForm']
     	]);
 
-    	$this->middware('thorttle:3,10', [
+    	$this->middleware('thorttle:3,10', [
     		'only' => ['sendResetLinkEmail']
     	]);
     	

@@ -15,7 +15,7 @@
 					@if(count($statuses) > 0)
 						<ul class="list-unstyled">
 							@foreach ($statuses as $status)
-								@include('statuses._status')
+								@include('shares._status')
 							@endforeach
 						</ul>
 
