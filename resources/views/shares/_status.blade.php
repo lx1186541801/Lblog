@@ -9,4 +9,12 @@
 
 		{{ $status->content }}
 	</div>
+
+	@can('destroy', $status)
+	    <form action="{{ route('statuses.destroy', $status) }}" method="POST" onsubmit="return confirm('是否确认要删除此条动态？')">
+	    	@csrf
+	    	@method('DELETE')
+	    	<button class="btn btn-danger btn-sm" type="submit">删除</button>
+	    </form>
+	@endcan
 </li>
