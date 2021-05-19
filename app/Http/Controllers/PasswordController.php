@@ -13,7 +13,27 @@ use DB;
 class PasswordController extends Controller
 {
     //
-    //
+    
+    public function __construct()
+    {
+    	// 中间件-访问限流    一分钟只能访问两次 showLinkRequestForm
+    	$this->middleware('throttle:2,1', [
+    		'only' => ['showLinkRequestForm']
+    	]);
+
+    	$this->middware('thorttle:3,10', [
+    		'only' => ['sendResetLinkEmail']
+    	]);
+    	
+    }
+
+
+    /**
+     * 忘记密码页面
+     * @Author   Robert
+     * @DateTime 2021-05-19
+     * @return   [type]     [description]
+     */
     public function showLinkRequestForm()
     {
     	return view('auth.passwords.email');

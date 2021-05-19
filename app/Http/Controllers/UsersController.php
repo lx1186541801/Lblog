@@ -22,6 +22,10 @@ class UsersController extends Controller
 			'only' => ['create']
 		]);
 
+		$this->middleware('throttle:10,60', [
+			'only' => ['store']
+		]);
+
 	}
 
 
@@ -31,10 +35,6 @@ class UsersController extends Controller
         return view('users.create');
     }
 
-    public function show(User $user)
-    {
-        return view('users.show', compact('user'));
-    }
 
 
     public function store(Request $request)
@@ -63,6 +63,12 @@ class UsersController extends Controller
     	// return redirect()->route('users.show', [$user]);
     }
 
+    public function show(User $user)
+    {
+        return view('users.show', compact('user'));
+    }
+
+    
     public function edit(User $user)
     {
     	$this->authorize('update', $user);
