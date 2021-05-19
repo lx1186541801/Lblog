@@ -48,10 +48,21 @@ class User extends Authenticatable
     {
         parent::boot();
 
+        // 监听事件
         static::creating(function ($user) {
             $user->activation_token = Str::random(10);
         });
     }
+
+
+    public function statuses()
+    {
+        return $this->hasMany(Status::class);
+    }
+
+
+
+
 
 
     /**
