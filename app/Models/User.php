@@ -61,6 +61,58 @@ class User extends Authenticatable
     }
 
     /**
+     * 关注动作
+     * @Author   Robert
+     * @DateTime 2021-05-20
+     * @param    [type]     $user_ids [description]
+     * @return   [type]               [description]
+     */
+    public function follow($user_ids)
+    {
+        if ( ! is_array($user_ids)) {
+            $user_ids = compact('user_ids');
+        }
+
+        $this->followerings()->sync($user_ids, false);
+    }
+
+
+    /**
+     * 取关动作
+     * @Author   Robert
+     * @DateTime 2021-05-20
+     * @param    [type]     $user_ids [description]
+     * @return   [type]               [description]
+     */
+    public function unfollow($user_ids)
+    {
+        if ( ! is_array($user_ids)) {
+            $user_ids = compact('user_ids');
+        }
+
+        $this->followerings()->detach($user_ids);
+    }
+
+    public function isFollowing($user_id)
+    {
+        // contains 判断 参数是否在集合中 返回 boolean 值
+        return $this->followerings->contains($user_id);
+    }
+
+
+    public function followers()
+    {
+        return $this->belongsToMany(Users::class, 'followers', 'user_id', 'follower_id');
+    }
+
+    public function followerings()
+    {
+        return $this->belongsToMany(User::class. 'followers', 'follower_id', 'user_id');
+    }
+
+
+
+    /**
      * 获取当前用户所有 动态
      * @Author   Robert
      * @DateTime 2021-05-19
