@@ -73,7 +73,7 @@ class User extends Authenticatable
             $user_ids = compact('user_ids');
         }
 
-        $this->followerings()->sync($user_ids, false);
+        $this->followings()->sync($user_ids, false);
     }
 
 
@@ -90,24 +90,24 @@ class User extends Authenticatable
             $user_ids = compact('user_ids');
         }
 
-        $this->followerings()->detach($user_ids);
+        $this->followings()->detach($user_ids);
     }
 
     public function isFollowing($user_id)
     {
         // contains 判断 参数是否在集合中 返回 boolean 值
-        return $this->followerings->contains($user_id);
+        return $this->followings->contains($user_id);
     }
 
 
     public function followers()
     {
-        return $this->belongsToMany(Users::class, 'followers', 'user_id', 'follower_id');
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id')->withTimestamps();
     }
 
-    public function followerings()
+    public function followings()
     {
-        return $this->belongsToMany(User::class. 'followers', 'follower_id', 'user_id');
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id')->withTimestamps();
     }
 
 
