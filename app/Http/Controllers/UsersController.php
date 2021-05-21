@@ -30,6 +30,28 @@ class UsersController extends Controller
 
 
 
+	public function followers(User $user)
+	{
+		$users = $user->followers()->paginate(30);
+		$title = $user->name . "的粉丝";
+
+		return view('users.show_follow', compact('title', 'users'));
+
+	}
+
+
+	public function followings(User $user)
+	{
+		$users = $user->followings()->paginate(30);
+
+		$title = $user->name . "的关注";
+
+		return view('users.show_follow', compact('title', 'users'));
+	}
+
+
+
+
     public function create()
     {
         return view('users.create');
