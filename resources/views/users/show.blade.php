@@ -8,8 +8,15 @@
 		<div class="col-md-12">
 			<div class="offset-md-2 col-md-10">
 				<section class="user_info">
-					@include('shares._user_info', ['user' => $user])
+					@include('shares._user_info')
 				</section>
+
+
+				@if (Auth::check())
+					@include('users._follow_form')
+					111
+				@endif
+
 				<section class="stats mt-2">
 					@include('shares._stats')
 				</section>
